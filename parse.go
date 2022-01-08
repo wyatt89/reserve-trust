@@ -1,6 +1,9 @@
 package main
 
-import "errors"
+import (
+	"errors"
+	"strings"
+)
 
 type Payment struct {
 	SenderName             string
@@ -22,4 +25,13 @@ var (
 
 func ParsePayment(payment []byte) (Payment, error) {
 	return Payment{}, nil
+}
+
+func ParseMultiLineFile(str, before, after string) (string, string) {
+	a := strings.SplitAfterN(str, before, 2)
+	b := strings.SplitAfterN(a[len(a)-1], after, 2)
+	if 1 == len(b) {
+		return b[0], ""
+	}
+	return b[0][0 : len(b[0])-len(after)], b[1]
 }
