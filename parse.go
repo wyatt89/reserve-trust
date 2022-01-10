@@ -137,6 +137,8 @@ func validatePaymentInt(paymentFields []string, pInd int, err error) (int, error
 	if len(str) > MaxIntLength || str == "" {
 		return -1, err
 	}
+
+	// Could add an extra validation that the numeric string only contains numbers then wrap it in the field error that is passed in
 	num, conErr := strconv.Atoi(paymentFields[pInd])
 	if conErr != nil {
 		return -1, err
