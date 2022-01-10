@@ -42,7 +42,8 @@ var (
 	ErrorInvalidPaymentFile            = errors.New("error: payment file is empty")
 
 	// ErrorInvalidPaymentFormat opted to split payment string all at once instead of parsing field by field. This made identifying which section was invalid difficult
-	// could change it to parse field by field - will catch if the note or any field contains a colon because it's a file the integer values could contain ":"
+	// could change it to parse field by field
+	// current implementation will catch if the note or any other field contains a colon, because it is a file the integer values could contain ":"
 	ErrorInvalidPaymentFormat                             = errors.New("error: payment has too few or too many values")
 	ErrorMatchingSenderAndReceiverAccountAndRoutingNumber = errors.New("error: send account and routing number cannot match receiver account and routing number")
 	ErrorInvalidSurroundingSymbols                        = errors.New("error: start or end symbol is not present")
